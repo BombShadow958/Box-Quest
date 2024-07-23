@@ -10,6 +10,8 @@ public class PlayerControls : MonoBehaviour
     private Rigidbody2D rb;
     float m_Horizontal;
     float m_Vertical;
+    private float maxSize = 15;
+    private float minSize = 0.2f;
 
     private bool isGrounded;
 
@@ -30,6 +32,25 @@ public class PlayerControls : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jump);
         }
+        if (Input.GetKey(KeyCode.W)) {
+            transform.localScale += new Vector3(0.0100f, 0.0100f, 0.0100f);
+            rb.mass += 0.01f;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            transform.localScale -= new Vector3(0.0100f, 0.0100f, 0.0100f);
+            rb.mass -= 0.01f;
+        }
+
+        if (transform.localScale == new Vector3(4f, 4f, 4f)) {
+            transform.localScale -= new Vector3(0.01f, 0.01f, 0.01f);
+            rb.mass -= 0.01f;
+        }
+        if (transform.localScale == new Vector3(0.5f, 0.5f, 0.5f)) {
+            transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
+            rb.mass += 0.01f;
+        }
+       
     }
 
     private void OnCollisionEnter2D(Collision2D other)
