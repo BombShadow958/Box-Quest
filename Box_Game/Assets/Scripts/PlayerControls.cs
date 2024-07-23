@@ -13,6 +13,9 @@ public class PlayerControls : MonoBehaviour
     private float maxSize = 15;
     private float minSize = 0.2f;
 
+    public float x;
+    public float y;
+
     private bool isGrounded;
 
     private void Awake()
@@ -50,6 +53,9 @@ public class PlayerControls : MonoBehaviour
             transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
             rb.mass += 0.01f;
         }
+
+        x = transform.position.x;
+        y = transform.position.y;
        
     }
 
