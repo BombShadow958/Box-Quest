@@ -8,33 +8,38 @@ public class CameraCode : MonoBehaviour
     private float camX;
     public PlayerControls playerX;
     public PlayerControls playerY;
+    bool moveForward;
     // Start is called before the first frame update
-    void Awake()
-    {
+    void Awake() {
         camX = 0;
         playerX = FindObjectOfType<PlayerControls>();
         playerY = FindObjectOfType<PlayerControls>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         Debug.Log(playerX.x);
-        if (playerX.x > transform.position.x + 9)
-        {
+        if (playerX.x > camX + 8) {
+            moveForward = true;
             MoveCamRight();
         }
+        if (playerX.x < camX - 8) {
+            moveForward = false;
+            MoveCamLeft();
+        }
 
-        if (transform.position.x < camX)
-        {
+        if (transform.position.x < camX && moveForward == true) {
             transform.Translate(Vector2.right * movespeed * Time.deltaTime);
         }
-    }
-    void MoveCamRight()
-    {
-        for (int i = 0; i < 1; i++)
+        if (transform.position.x > camX && moveForward == false)
         {
-            camX = camX + 17.9f;
+            transform.Translate(Vector2.left * movespeed * Time.deltaTime);
         }
+    }
+    void MoveCamRight() {
+            camX += 17.9f;
+    }
+    void MoveCamLeft() {
+        camX -= 17.9f;
     }
 }
