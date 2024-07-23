@@ -37,9 +37,9 @@ public class CameraCode : MonoBehaviour
         }
     }
     void MoveCamRight() {
-            camX += 17.9f;
+            camX += 18.0f;
     }
     void MoveCamLeft() {
-        camX -= 17.9f;
+        camX -= 18.0f;
     }
 }
