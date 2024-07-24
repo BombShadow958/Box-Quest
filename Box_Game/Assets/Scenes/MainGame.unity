@@ -432,7 +432,7 @@ Rigidbody2D:
   m_Mass: 4
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 12
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Speed: 10
-  jump: 15000
+  jump: 1000
   x: 0
   y: 0
 --- !u!1 &832980887
@@ -1920,6 +1920,7 @@ GameObject:
   - component: {fileID: 1523437726}
   - component: {fileID: 1523437728}
   - component: {fileID: 1523437727}
+  - component: {fileID: 1523437729}
   m_Layer: 0
   m_Name: BackGround
   m_TagString: Untagged
@@ -5666,6 +5667,21 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1523437729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523437725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83dd13e637cab814e8efba2e35d544f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: 1
+  rb: {fileID: 0}
+  isGrounded: 0
 --- !u!1 &1854952564
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,8 +8,8 @@ public class PlayerControls : MonoBehaviour
 
     public float jump;
     private Rigidbody2D rb;
-    float m_Horizontal;
-    float m_Vertical;
+    //float m_Horizontal;
+    //float m_Vertical;
     private float maxSize = 15;
     private float minSize = 0.2f;
 
@@ -35,6 +35,17 @@ public class PlayerControls : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jump);
         }
+
+        //Movement 
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Translate(Vector2.right * m_Speed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Translate(-Vector2.right * m_Speed * Time.deltaTime);
+        }
+        //Size Changing
         if (Input.GetKey(KeyCode.W)) {
             transform.localScale += new Vector3(0.0100f, 0.0100f, 0.0100f);
             rb.mass += 0.01f;
@@ -77,8 +88,8 @@ public class PlayerControls : MonoBehaviour
 
     private void FixedUpdate()
     {
-        m_Horizontal = Input.GetAxis("Horizontal");
+        //m_Horizontal = Input.GetAxis("Horizontal");
 
-        rb.velocity = new Vector2(m_Horizontal * m_Speed, m_Vertical * m_Speed);
+        //rb.velocity = new Vector2(m_Horizontal * m_Speed, m_Vertical * m_Speed);
     }
 }
