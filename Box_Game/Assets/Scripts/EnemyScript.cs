@@ -35,6 +35,8 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        m_TurnAround = false;
+
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
         if (distanceFromPlayer < m_AggroRange)
         {
@@ -75,7 +77,6 @@ public class EnemyScript : MonoBehaviour
         Debug.Log("Chasing");
         isPatrolling = false;
         isHome = false;
-        m_TurnAround = false;
         transform.position = Vector2.MoveTowards(this.transform.position, player.position, m_speed * Time.deltaTime);
     }
 
@@ -100,7 +101,7 @@ public class EnemyScript : MonoBehaviour
         {
             Debug.Log("Going Home");
             transform.position = Vector2.MoveTowards(this.transform.position, m_HomePoint, m_speed * Time.deltaTime);
-            if (Vector2.Equals(transform.position,m_HomePoint))
+            if (transform.position.x == m_HomePoint.x && transform.position.y == m_HomePoint.y)
             {
                 isHome = true;
             }
@@ -142,7 +143,7 @@ public class EnemyScript : MonoBehaviour
             {
                 currentPoint = pointB.transform;
             }*/
-        }
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
