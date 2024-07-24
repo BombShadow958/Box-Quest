@@ -6,6 +6,9 @@ public class PlayerControls : MonoBehaviour
 {
     public GameObject Checkpoint = null;
     public GameObject Player;
+    [SerializeField] private BoundsCheck roofCheck;
+    [SerializeField] private BoundsCheck frontCheck;
+    [SerializeField] private BoundsCheck backCheck;
     public float m_Speed;
 
     public float jump;
@@ -14,6 +17,7 @@ public class PlayerControls : MonoBehaviour
     //float m_Vertical;
     private float maxSize = 15;
     private float minSize = 0.2f;
+    private float direction; 
 
     public float x;
     public float y;
@@ -23,6 +27,7 @@ public class PlayerControls : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+      
     }
     // Start is called before the first frame update
     void Start()
@@ -38,19 +43,19 @@ public class PlayerControls : MonoBehaviour
             rb.AddForce(Vector2.up * jump);
         }
 
-        //Movement 
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Translate(Vector2.right * m_Speed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Translate(-Vector2.right * m_Speed * Time.deltaTime);
-        }
+        ////Movement 
+        direction = Input.GetAxisRaw("Horizontal");
+        rb.velocity = new Vector2(direction * m_Speed, rb.velocity.y);
+
         //Size Changing
         if (Input.GetKey(KeyCode.W)) {
-            transform.localScale += new Vector3(0.0100f, 0.0100f, 0.0100f);
-            rb.mass += 0.01f;
+            if (isGrounded && roofCheck.isColliding || frontCheck.isColliding && backCheck.isColliding) {
+                return;
+            }
+            else { 
+                transform.localScale += new Vector3(0.0100f, 0.0100f, 0.0100f);
+                rb.mass += 0.01f;
+            }
         }
         else if (Input.GetKey(KeyCode.S))
         {
@@ -66,6 +71,9 @@ public class PlayerControls : MonoBehaviour
             transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
             rb.mass += 0.01f;
         }
+
+
+       
 
         x = transform.position.x;
         y = transform.position.y;
@@ -83,7 +91,7 @@ public class PlayerControls : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Box"))
         {
             isGrounded = true;
         }
@@ -96,7 +104,7 @@ public class PlayerControls : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Box"))
         {
             isGrounded = false;
         }
