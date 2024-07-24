@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc8908caff44564499793c1b6e4eeb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movespeed: 2
+  movespeed: 10
   playerX: {fileID: 725913292}
   playerY: {fileID: 725913292}
 --- !u!50 &519420034
