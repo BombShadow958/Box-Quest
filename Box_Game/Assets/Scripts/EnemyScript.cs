@@ -23,6 +23,7 @@ public class EnemyScript : MonoBehaviour
 
     private float m_ChangeDirectionTimer = 3.0f;
     bool m_TurnAround;
+    private float m_TimeIncrease;
 
     // Start is called before the first frame update
     void Start()
@@ -113,16 +114,19 @@ public class EnemyScript : MonoBehaviour
     {
         Debug.Log("Patrolling");
 
+        m_TimeIncrease += Time.deltaTime;
 
         
-        if (m_TurnAround && m_ChangeDirectionTimer == 3.0f)
+        if (m_TurnAround && m_ChangeDirectionTimer == m_TimeIncrease)
         {
-            rb.velocity = new Vector2(m_speed, rb.velocity.y); // Move to the right
+            transform.position = new Vector2(m_speed, transform.position.y);
+            //rb.velocity = new Vector2(m_speed, rb.velocity.y); // Move to the right
             m_TurnAround = false;
         }
-        else if (m_TurnAround && m_ChangeDirectionTimer == 3.0f)
+        else if (m_TurnAround && m_ChangeDirectionTimer == m_TimeIncrease)
         {
-            rb.velocity = new Vector2(-m_speed, rb.velocity.y); // Move to the left
+            transform.position = new Vector2(-m_speed, transform.position.y);
+            //rb.velocity = new Vector2(-m_speed, rb.velocity.y); // Move to the left
             m_TurnAround = true;
         }
 
