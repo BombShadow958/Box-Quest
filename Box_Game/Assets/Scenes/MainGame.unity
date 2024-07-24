@@ -564,6 +564,7 @@ MonoBehaviour:
   m_CastPoint: {fileID: 537630451}
   pointA: {fileID: 1952032507}
   pointB: {fileID: 1854952564}
+  m_timer: 0
 --- !u!212 &832980889
 SpriteRenderer:
   m_ObjectHideFlags: 0

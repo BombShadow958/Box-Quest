@@ -18,7 +18,7 @@ public class CameraCode : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        Debug.Log(playerX.x);
+        //Debug.Log(playerX.x);
         if (playerX.x > camX + 8) {
             moveForward = true;
             MoveCamRight();

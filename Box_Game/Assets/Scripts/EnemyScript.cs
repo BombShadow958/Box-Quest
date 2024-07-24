@@ -21,6 +21,9 @@ public class EnemyScript : MonoBehaviour
     private Transform currentPoint;
     private Rigidbody2D rb;
 
+    private float m_timer;
+    bool m_TurnAround;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,8 +72,10 @@ public class EnemyScript : MonoBehaviour
 
     private void ChasePlayer()
     {
+        Debug.Log("Chasing");
         isPatrolling = false;
         isHome = false;
+        m_TurnAround = false;
         transform.position = Vector2.MoveTowards(this.transform.position, player.position, m_speed * Time.deltaTime);
     }
 
@@ -93,30 +98,51 @@ public class EnemyScript : MonoBehaviour
         }
         else
         {
+            Debug.Log("Going Home");
             transform.position = Vector2.MoveTowards(this.transform.position, m_HomePoint, m_speed * Time.deltaTime);
+            if (Vector2.Equals(transform.position,m_HomePoint))
+            {
+                isHome = true;
+            }
         }
     }
 
     private void Patrolling()
     {
-        Vector2 point = currentPoint.position - transform.position;
-        if (currentPoint = pointB.transform)
+        Debug.Log("Patrolling");
+        m_timer += Time.deltaTime;
+
+        if (m_timer >= 180 && m_TurnAround == false)
         {
-            rb.velocity = new Vector2(m_speed, 0);
-        } else
+            m_timer = 0;
+            transform.position = new Vector2(m_speed, 0);
+            m_TurnAround = true;
+        }
+        else if (m_timer >= 180 && m_TurnAround == true)
         {
-            rb.velocity = new Vector2(-m_speed, 0);
+            m_timer = 0;
+            transform.position = new Vector2(-m_speed, 0);
+            m_TurnAround = false;
         }
 
-        if(Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointB.transform)
-        {
-            currentPoint = pointA.transform;
+            /*Vector2 point = currentPoint.position - transform.position;
+            if (currentPoint = pointB.transform)
+            {
+                transform.position = new Vector2(m_speed, 0);
+            } else
+            {
+                transform.position = new Vector2(-m_speed, 0);
+            }
+
+            if(Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointB.transform)
+            {
+                currentPoint = pointA.transform;
+            }
+            if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointA.transform)
+            {
+                currentPoint = pointB.transform;
+            }*/
         }
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointA.transform)
-        {
-            currentPoint = pointB.transform;
-        }
-    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
