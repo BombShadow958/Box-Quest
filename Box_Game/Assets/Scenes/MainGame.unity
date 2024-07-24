@@ -293,8 +293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78540be12da0fe84ba5de943717ebf72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Checkpoint: {fileID: 0}
-  Player: {fileID: 0}
+  Checkpoint: {fileID: 725913287}
+  Player: {fileID: 111620884}
   m_Speed: 9
   jump: 1111
   x: 0
@@ -560,8 +560,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78540be12da0fe84ba5de943717ebf72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Checkpoint: {fileID: 0}
-  Player: {fileID: 0}
+  Checkpoint: {fileID: 725913287}
+  Player: {fileID: 189615627}
   m_Speed: 9
   jump: 1111
   x: 0
@@ -737,8 +737,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78540be12da0fe84ba5de943717ebf72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Checkpoint: {fileID: 0}
-  Player: {fileID: 0}
+  Checkpoint: {fileID: 725913287}
+  Player: {fileID: 196488948}
   m_Speed: 9
   jump: 1111
   x: 0
@@ -1044,8 +1044,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78540be12da0fe84ba5de943717ebf72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Checkpoint: {fileID: 0}
-  Player: {fileID: 0}
+  Checkpoint: {fileID: 725913287}
+  Player: {fileID: 271864293}
   m_Speed: 9
   jump: 1111
   x: 0
@@ -1523,8 +1523,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78540be12da0fe84ba5de943717ebf72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Checkpoint: {fileID: 0}
-  Player: {fileID: 0}
+  Checkpoint: {fileID: 725913287}
+  Player: {fileID: 684360877}
   m_Speed: 9
   jump: 1111
   x: 0
@@ -1883,8 +1883,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78540be12da0fe84ba5de943717ebf72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Checkpoint: {fileID: 0}
-  Player: {fileID: 0}
+  Checkpoint: {fileID: 725913287}
+  Player: {fileID: 745980495}
   m_Speed: 9
   jump: 1111
   x: 0
@@ -3472,8 +3472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78540be12da0fe84ba5de943717ebf72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Checkpoint: {fileID: 0}
-  Player: {fileID: 0}
+  Checkpoint: {fileID: 725913287}
+  Player: {fileID: 1351873406}
   m_Speed: 9
   jump: 1111
   x: 0
