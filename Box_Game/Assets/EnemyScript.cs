@@ -89,7 +89,6 @@ public class EnemyScript : MonoBehaviour
         else
         {
             transform.position = Vector2.MoveTowards(this.transform.position, m_HomePoint, m_speed * Time.deltaTime);
-            //transform.position = m_HomePoint;
         }
     }
 
