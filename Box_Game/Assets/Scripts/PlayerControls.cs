@@ -49,7 +49,7 @@ public class PlayerControls : MonoBehaviour
             transform.localScale -= new Vector3(0.01f, 0.01f, 0.01f);
             rb.mass -= 0.01f;
         }
-        if (transform.localScale == new Vector3(0.5f, 0.5f, 0.5f)) {
+        if (transform.localScale == new Vector3(0.1f, 0.1f, 0.1f)) {
             transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
             rb.mass += 0.01f;
         }
