@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
+    public GameObject Checkpoint = null;
+    public GameObject Player;
     public float m_Speed;
 
     public float jump;
@@ -67,7 +69,16 @@ public class PlayerControls : MonoBehaviour
 
         x = transform.position.x;
         y = transform.position.y;
-       
+
+        //Checkpoint
+
+        if (Input.GetKey(KeyCode.R))
+        {
+            Debug.Log("teleported");
+            Player.transform.position = Checkpoint.transform.position;
+            y = -3.5f;
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -75,6 +86,11 @@ public class PlayerControls : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+        }
+        
+        if (other.gameObject.CompareTag("Checkpoint"))
+        {
+            Checkpoint = GameObject.Find("Checkpoint");
         }
     }
 
