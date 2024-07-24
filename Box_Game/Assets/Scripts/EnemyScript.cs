@@ -114,54 +114,26 @@ public class EnemyScript : MonoBehaviour
     {
         Debug.Log("Patrolling");
 
-        m_TimeIncrease += Time.deltaTime;
-
-        
-        if (m_TurnAround && m_ChangeDirectionTimer == m_TimeIncrease)
-        {
-            transform.position = new Vector2(m_speed, transform.position.y);
-            //rb.velocity = new Vector2(m_speed, rb.velocity.y); // Move to the right
-            m_TurnAround = false;
-        }
-        else if (m_TurnAround && m_ChangeDirectionTimer == m_TimeIncrease)
-        {
-            transform.position = new Vector2(-m_speed, transform.position.y);
-            //rb.velocity = new Vector2(-m_speed, rb.velocity.y); // Move to the left
-            m_TurnAround = true;
-        }
-
-        /*m_timer += Time.deltaTime;
-
-        if (m_timer >= 180 && m_TurnAround == false)
-        {
-            m_timer = 0;
-            transform.position = new Vector2(m_speed, 0);
-            m_TurnAround = true;
-        }
-        else if (m_timer >= 180 && m_TurnAround == true)
-        {
-            m_timer = 0;
-            transform.position = new Vector2(-m_speed, 0);
-            m_TurnAround = false;
-        }*/
-
-        /*Vector2 point = currentPoint.position - transform.position;
-        if (currentPoint = pointB.transform)
-        {
-            transform.position = new Vector2(m_speed, 0);
-        } else
-        {
-            transform.position = new Vector2(-m_speed, 0);
-        }
-
-        if(Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointB.transform)
-        {
-            currentPoint = pointA.transform;
-        }
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointA.transform)
+        if (transform.position.x <= pointA.transform.position.x)
         {
             currentPoint = pointB.transform;
-        }*/
+            m_TurnAround = false;
+        }
+        else if (transform.position.x >= pointB.transform.position.x)
+        {
+            currentPoint = pointA.transform;
+            m_TurnAround = true;
+        }
+
+        transform.position = Vector2.MoveTowards(this.transform.position, currentPoint.position, m_speed * Time.deltaTime);
+
+        m_TimeIncrease += Time.deltaTime;
+
+        if (m_TimeIncrease >= m_ChangeDirectionTimer)
+        {
+            m_TurnAround = !m_TurnAround;
+            m_TimeIncrease = 0f;
+        }
     }
 
     private void OnDrawGizmosSelected()
