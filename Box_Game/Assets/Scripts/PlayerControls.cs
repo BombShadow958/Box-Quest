@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
-    public GameObject Checkpoint = null;
+    public Vector2 Checkpoint;
     public GameObject Player;
     [SerializeField] private BoundsCheck roofCheck;
     [SerializeField] private BoundsCheck frontCheck;
@@ -82,11 +82,14 @@ public class PlayerControls : MonoBehaviour
 
         if (Input.GetKey(KeyCode.R))
         {
-            Debug.Log("teleported");
-            Player.transform.position = Checkpoint.transform.position;
-            y = -3.5f;
+            transform.position = Checkpoint;
         }
 
+    }
+    
+    public void UpdateCheckpoint(Vector2 pos)
+    {
+        Checkpoint = pos;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -94,11 +97,6 @@ public class PlayerControls : MonoBehaviour
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Box"))
         {
             isGrounded = true;
-        }
-        
-        if (other.gameObject.CompareTag("Checkpoint"))
-        {
-            Checkpoint = GameObject.Find("Checkpoint");
         }
     }
 
