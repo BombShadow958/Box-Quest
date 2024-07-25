@@ -76,7 +76,7 @@ public class EnemyScript : MonoBehaviour
 
     private void ChasePlayer()
     {
-        Debug.Log("Chasing");
+        //Debug.Log("Chasing");
         isPatrolling = false;
         isHome = false;
         transform.position = Vector2.MoveTowards(this.transform.position, player.position, m_speed * Time.deltaTime);
@@ -101,7 +101,7 @@ public class EnemyScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("Going Home");
+            //Debug.Log("Going Home");
             transform.position = Vector2.MoveTowards(this.transform.position, m_HomePoint, m_speed * Time.deltaTime);
             if (transform.position.x == m_HomePoint.x && transform.position.y == m_HomePoint.y)
             {
@@ -112,7 +112,7 @@ public class EnemyScript : MonoBehaviour
 
     private void Patrolling()
     {
-        Debug.Log("Patrolling");
+        //Debug.Log("Patrolling");
 
         if (transform.position.x <= pointA.transform.position.x)
         {
