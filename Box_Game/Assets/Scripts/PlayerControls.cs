@@ -24,6 +24,7 @@ public class PlayerControls : MonoBehaviour
     public float y;
 
     private bool isGrounded;
+    private bool isFloating;
 
     private void Awake()
     {
@@ -47,6 +48,20 @@ public class PlayerControls : MonoBehaviour
         ////Movement 
         direction = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(direction * m_Speed, rb.velocity.y);
+
+        //funny 
+        if (Input.GetKey(KeyCode.F))
+        {
+            isFloating = !isFloating;
+        }
+        if (isFloating && transform.position.y < -2)
+        {
+            rb.gravityScale = -0.5f;
+        }
+        else
+        {
+            rb.gravityScale = 1;
+        }
 
         //Size Changing
         if (Input.GetKey(KeyCode.W)) {
