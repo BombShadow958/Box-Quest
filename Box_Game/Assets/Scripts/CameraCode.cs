@@ -11,7 +11,7 @@ public class CameraCode : MonoBehaviour
     bool moveForward;
     // Start is called before the first frame update
     void Awake() {
-        camX = 0;
+        camX = 2.88f;
         playerX = FindObjectOfType<PlayerControls>();
         playerY = FindObjectOfType<PlayerControls>();
     }
@@ -23,9 +23,12 @@ public class CameraCode : MonoBehaviour
             moveForward = true;
             MoveCamRight();
         }
-        if (playerX.x < camX - 8) {
+        if (playerX.x < camX - 8 && playerX.x > -5) {
             moveForward = false;
             MoveCamLeft();
+        } else if (playerX.x <= -5 && playerX.x < camX - 8)
+        {
+
         }
 
         if (transform.position.x < camX && moveForward == true) {
@@ -37,9 +40,9 @@ public class CameraCode : MonoBehaviour
         }
     }
     void MoveCamRight() {
-            camX += 18.0f;
+            camX += 21.0f;
     }
     void MoveCamLeft() {
-        camX -= 18.0f;
+        camX -= 21.0f;
     }
 }
