@@ -106,6 +106,8 @@ public class PlayerControls : MonoBehaviour
         {
             SceneManager.LoadSceneAsync(2);
         }
+
+
     }
     
     public void UpdateCheckpoint(Vector2 pos)
@@ -118,6 +120,11 @@ public class PlayerControls : MonoBehaviour
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Box"))
         {
             isGrounded = true;
+        }
+
+        //Lose Screen 
+        if (other.gameObject.CompareTag("Enemy")) {
+            SceneManager.LoadSceneAsync(3);
         }
     }
 
