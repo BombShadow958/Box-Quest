@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
+    public AudioSource sfxSource;
+    public AudioClip[] noiseSFX;
+    public float timer;
+    public float timeBetweenNoises;
     public float m_speed;
     public float m_AggroRange;
 
@@ -37,7 +41,16 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_TurnAround = false;
+        timer += Time.deltaTime;
+
+        if (timer > timeBetweenNoises)
+        {
+            timer = 0;
+            int randomNum = Random.Range(0, 2);
+            sfxSource.clip = noiseSFX[randomNum];
+            sfxSource.Play();
+        }
+            m_TurnAround = false;
 
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
         if (distanceFromPlayer < m_AggroRange)
