@@ -27872,7 +27872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSource: {fileID: 2104876546}
-  BackgroundMusic: {fileID: 8300000, guid: 19ef12f189b67bf4fa811c9c6933b5cc, type: 3}
+  BackgroundMusic: {fileID: 8300000, guid: 52f0ce3182a8db44983db93f110b770e, type: 3}
 --- !u!4 &2104876548
 Transform:
   m_ObjectHideFlags: 0
