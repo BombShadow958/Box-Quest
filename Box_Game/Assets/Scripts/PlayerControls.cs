@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerControls : MonoBehaviour
 {
+    public AudioSource sfxSource;
+    public AudioClip jumpSFX;
+    public AudioClip growSFX;
+    public AudioClip shrinkSFX;
     public Vector2 Checkpoint;
     public GameObject Player;
     [SerializeField] private BoundsCheck roofCheck;
@@ -42,6 +46,8 @@ public class PlayerControls : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            sfxSource.clip = jumpSFX;
+            sfxSource.Play();
             rb.AddForce(Vector2.up * jump);
         }
 
@@ -64,19 +70,24 @@ public class PlayerControls : MonoBehaviour
         }
 
         //Size Changing
-        if (Input.GetKey(KeyCode.W)) {
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
             if (isGrounded && roofCheck.isColliding || frontCheck.isColliding && backCheck.isColliding) {
                 return;
             }
-            else { 
+            else {
+                sfxSource.clip = growSFX;
+                sfxSource.Play();
                 transform.localScale += new Vector3(0.0100f, 0.0100f, 0.0100f);
                 rb.mass += 0.01f;
             }
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
+            sfxSource.clip = shrinkSFX;
+            sfxSource.Play();
             transform.localScale -= new Vector3(0.0100f, 0.0100f, 0.0100f);
             rb.mass -= 0.01f;
+            
         }
 
         if (transform.localScale == new Vector3(4f, 4f, 4f)) {
