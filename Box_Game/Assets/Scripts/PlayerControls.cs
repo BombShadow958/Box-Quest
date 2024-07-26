@@ -23,7 +23,7 @@ public class PlayerControls : MonoBehaviour
     public float x;
     public float y;
 
-    private bool isGrounded;
+    public bool isGrounded;
     private bool isFloating;
 
     private void Awake()
