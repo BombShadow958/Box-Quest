@@ -102,7 +102,7 @@ public class PlayerControls : MonoBehaviour
         }
 
         //Win Screen
-        if (x > 81)
+        if (x > 180)
         {
             SceneManager.LoadSceneAsync(2);
         }
