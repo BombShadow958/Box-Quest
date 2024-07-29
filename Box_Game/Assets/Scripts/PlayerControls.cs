@@ -9,6 +9,7 @@ public class PlayerControls : MonoBehaviour
     public AudioClip jumpSFX;
     public AudioClip growSFX;
     public AudioClip shrinkSFX;
+    public AudioClip GotHitSFX;
     public Vector2 Checkpoint;
     public GameObject Player;
     [SerializeField] private BoundsCheck roofCheck;
@@ -29,6 +30,10 @@ public class PlayerControls : MonoBehaviour
 
     private bool isGrounded;
     private bool isFloating;
+
+    private int m_HitPoints = 3;
+    private bool m_IsInvincible = false;
+    private float m_IFrames;
 
     private void Awake()
     {
@@ -55,19 +60,6 @@ public class PlayerControls : MonoBehaviour
         direction = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(direction * m_Speed, rb.velocity.y);
 
-        //funny 
-        if (Input.GetKey(KeyCode.F))
-        {
-            isFloating = !isFloating;
-        }
-        if (isFloating && transform.position.y < -2)
-        {
-            rb.gravityScale = -0.5f;
-        }
-        else
-        {
-            rb.gravityScale = 1;
-        }
 
         //Size Changing
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
@@ -118,7 +110,14 @@ public class PlayerControls : MonoBehaviour
             SceneManager.LoadSceneAsync(2);
         }
 
-
+        // invinciblilty
+        if (m_IFrames > 0) {
+            m_IsInvincible = true;
+            m_IFrames -= 1 * Time.deltaTime;
+        }
+        else   {
+            m_IsInvincible = false;
+        }
     }
     
     public void UpdateCheckpoint(Vector2 pos)
@@ -134,8 +133,17 @@ public class PlayerControls : MonoBehaviour
         }
 
         //Lose Screen 
-        if (other.gameObject.CompareTag("Enemy")) {
-            SceneManager.LoadSceneAsync(3);
+        if (other.gameObject.CompareTag("Enemy") && m_IsInvincible == false) {
+            if (m_HitPoints == 1) {
+                SceneManager.LoadSceneAsync(3);
+            }
+            else {
+                sfxSource.clip = GotHitSFX;
+                sfxSource.Play();
+                m_IFrames = 1.5f;
+                m_HitPoints--;
+            }
+
         }
     }
 
