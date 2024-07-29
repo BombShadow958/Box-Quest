@@ -114,7 +114,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 88
+        y: 216
         width: 24
         height: 39
       alignment: 0
@@ -135,7 +135,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 35
-        y: 88
+        y: 216
         width: 22
         height: 39
       alignment: 0
@@ -156,7 +156,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 61
-        y: 88
+        y: 216
         width: 27
         height: 39
       alignment: 0
@@ -177,7 +177,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 47
+        y: 175
         width: 24
         height: 39
       alignment: 0
@@ -198,7 +198,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 47
+        y: 175
         width: 22
         height: 39
       alignment: 0
@@ -219,7 +219,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 61
-        y: 47
+        y: 175
         width: 27
         height: 39
       alignment: 0
@@ -231,6 +231,132 @@ TextureImporter:
       bones: []
       spriteID: 683d437e611a154448a3584f42d4de56
       internalID: 998660712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VaultGoblins_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 129
+        width: 24
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a7984857d4115742af813783afb6ad5
+      internalID: -345419490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VaultGoblins_7
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 129
+        width: 22
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f02ed7d3e3135fe4691039c97392600b
+      internalID: 1160704948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VaultGoblins_8
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 129
+        width: 27
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 563643afed4f0c64ebb471c2ece32f43
+      internalID: 1645262247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VaultGoblins_9
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 88
+        width: 24
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fc7cdacc0df58e49b7ee8013a22950c
+      internalID: 511924313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VaultGoblins_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 88
+        width: 22
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4f3911e6c572d243bc80aa33b0b89cb
+      internalID: 732080852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VaultGoblins_11
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 88
+        width: 27
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e013f9aa99cae9c4bbacfc8797b5dbd4
+      internalID: -1208416511
       vertices: []
       indices: 
       edges: []
@@ -248,10 +374,16 @@ TextureImporter:
     nameFileIdTable:
       VaultGoblins_0: 345130643
       VaultGoblins_1: 1023800266
+      VaultGoblins_10: 732080852
+      VaultGoblins_11: -1208416511
       VaultGoblins_2: -1010613398
       VaultGoblins_3: -720898885
       VaultGoblins_4: -714231829
       VaultGoblins_5: 998660712
+      VaultGoblins_6: -345419490
+      VaultGoblins_7: 1160704948
+      VaultGoblins_8: 1645262247
+      VaultGoblins_9: 511924313
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
