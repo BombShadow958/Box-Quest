@@ -1724,7 +1724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc8908caff44564499793c1b6e4eeb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movespeed: 10
+  movespeed: 20
   playerX: {fileID: 725913292}
   playerY: {fileID: 725913292}
 --- !u!50 &519420034
@@ -27580,6 +27580,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1529810194}
     m_Modifications:
+    - target: {fileID: 2969530977986237783, guid: 351212457629f864d83d9e2a8d7ed253, type: 3}
+      propertyPath: m_boxBullet
+      value: 
+      objectReference: {fileID: 3121166954464882909, guid: 477610ed32c167b4d8d1e36e97d70108, type: 3}
     - target: {fileID: 2969530977986237783, guid: 351212457629f864d83d9e2a8d7ed253, type: 3}
       propertyPath: m_AwakeRange
       value: 9.5

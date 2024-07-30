@@ -4,31 +4,25 @@ using UnityEngine;
 
 public class SPIN : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    public bool goLeft = true;
+    [SerializeField] private bool Spinning = true;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x <= -7) {
-            goLeft = false; 
+        if (Spinning) {
+            transform.Rotate(0, 0, 10);
         }
-        if (transform.position.x >= 7)
-        {
-            goLeft = true;
-        }
-
-        if (goLeft == true) {
-            rb.AddForce(Vector2.left * 10);
-        }
-        else {
-            rb.AddForce(Vector2.right * 10);
-        }
-        transform.Rotate(0, 0, 10);
     }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Player")) {
+            Spinning = false;
+        }
+    }
+
 }
