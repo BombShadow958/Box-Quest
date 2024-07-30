@@ -11,7 +11,10 @@ public class BossScript : MonoBehaviour
     public float m_FireRate = 1.0f;
     private float m_nextFireTime;
     public GameObject m_bullet;
+    public GameObject m_boxBullet;
     public GameObject m_bulletParent;
+
+   [SerializeField] private int m_ShotType;
 
     private Transform player;
 
@@ -65,7 +68,14 @@ public class BossScript : MonoBehaviour
             else if (distanceFromPlayer <= m_ShootingRange && m_nextFireTime < Time.time)
             {
                 m_Anim.SetBool("Attack", true);
-                Instantiate(m_bullet, m_bulletParent.transform.position, Quaternion.identity);
+                m_ShotType = Random.Range(0, 2);
+                if (m_ShotType == 0)
+                {
+                    Instantiate(m_bullet, m_bulletParent.transform.position, Quaternion.identity);
+                }
+                else if (m_ShotType == 1) {
+                    Instantiate(m_boxBullet, m_bulletParent.transform.position, Quaternion.identity);
+                }
                 m_nextFireTime = Time.time + m_FireRate;
             }
         }
