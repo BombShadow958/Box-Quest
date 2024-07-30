@@ -58,6 +58,8 @@ public class PlayerControls : MonoBehaviour
             sfxSource.clip = jumpSFX;
             sfxSource.Play();
             rb.AddForce(Vector2.up * jump);
+            m_animator.SetLayerWeight(1, 1);
+            m_animator.SetBool("Jump", true);
         }
 
         ////Movement 
@@ -136,7 +138,7 @@ public class PlayerControls : MonoBehaviour
             m_animator.SetLayerWeight(1, 1);
 
             // if the input given is Left or Right
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
             {
                 // Check the value of the Horizontal Movement. Negative = left, positive = right
                 if (direction < 0)
@@ -167,6 +169,7 @@ public class PlayerControls : MonoBehaviour
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Box"))
         {
             isGrounded = true;
+            m_animator.SetBool("Jump", false);
         }
 
         //Lose Screen 
@@ -202,7 +205,5 @@ public class PlayerControls : MonoBehaviour
     {
         m_animator.SetBool("Left", false);
         m_animator.SetBool("Right", false);
-        m_animator.SetBool("Forward", false);
-        m_animator.SetBool("Backward", false);
     }
 }
