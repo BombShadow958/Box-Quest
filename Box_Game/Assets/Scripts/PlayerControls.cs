@@ -164,6 +164,7 @@ public class PlayerControls : MonoBehaviour
         Checkpoint = pos;
     }
 
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Box"))

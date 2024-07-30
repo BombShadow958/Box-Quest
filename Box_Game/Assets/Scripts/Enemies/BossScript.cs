@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BossScript : MonoBehaviour
@@ -10,15 +12,21 @@ public class BossScript : MonoBehaviour
     public float m_AwakeRange;
     public float m_FireRate = 1.0f;
     private float m_nextFireTime;
+    public int BossHP = 3;
+    public bool m_IsInvincible = false;
+    public float m_IFrames;
     public GameObject m_bullet;
     public GameObject m_boxBullet;
     public GameObject m_bulletParent;
 
-   [SerializeField] private int m_ShotType;
+    [SerializeField] private BossHitCheck topCheck;
+    [SerializeField] private int m_ShotType;
 
     private Transform player;
 
     private Rigidbody2D rb;
+
+    private SpriteRenderer sr;
 
     [HideInInspector] Animator m_Anim;
 
@@ -78,6 +86,30 @@ public class BossScript : MonoBehaviour
                 }
                 m_nextFireTime = Time.time + m_FireRate;
             }
+        }
+        if (topCheck.isColliding && m_IsInvincible == false)  {
+            m_IFrames = 2.5f;
+            if (BossHP == 0) {
+               // Destroy(this.gameObject);
+            }
+            BossHP--;
+        }
+        if (m_IFrames > 0) {
+            m_IsInvincible = true;
+            m_IFrames -= 1 * Time.deltaTime;
+            rb.freezeRotation = false;
+            transform.Rotate(0, 0, 15);
+            sr.color = Color.red;
+
+        }
+        else  {
+            transform.eulerAngles = Vector3.zero;
+            rb.freezeRotation = true;
+            m_IsInvincible = false;
+            sr.color = Color.white;
+        }
+        if (BossHP <= 0)  {
+            Destroy(this);
         }
     }
 
