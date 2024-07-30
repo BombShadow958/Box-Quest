@@ -29,6 +29,8 @@ public class EnemyScript : MonoBehaviour
     bool m_TurnAround;
     private float m_TimeIncrease;
 
+    [HideInInspector] public Animator m_Anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,11 +38,14 @@ public class EnemyScript : MonoBehaviour
         m_HomePoint = transform.position;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         currentPoint = pointB.transform;
+        m_Anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        ResetAnimDirection();
+
         timer += Time.deltaTime;
 
         if (timer > timeBetweenNoises)
@@ -50,7 +55,7 @@ public class EnemyScript : MonoBehaviour
             sfxSource.clip = noiseSFX[randomNum];
             sfxSource.Play();
         }
-            m_TurnAround = false;
+        m_TurnAround = false;
 
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
         if (distanceFromPlayer < m_AggroRange)
@@ -93,6 +98,13 @@ public class EnemyScript : MonoBehaviour
         isPatrolling = false;
         isHome = false;
         transform.position = Vector2.MoveTowards(this.transform.position, player.position, m_speed * Time.deltaTime);
+        if (transform.position.x < player.position.x) {
+            m_Anim.SetBool("ChaseRight", true);
+            m_Anim.SetBool("ChaseLeft", false);
+        } else if (transform.position.x > player.position.x) {
+            m_Anim.SetBool("ChaseLeft", true);
+            m_Anim.SetBool("ChaseRight", false);
+        }
     }
 
     private void PatrolOrHome()
@@ -131,11 +143,15 @@ public class EnemyScript : MonoBehaviour
         {
             currentPoint = pointB.transform;
             m_TurnAround = false;
+            m_Anim.SetBool("Right", true);
+            m_Anim.SetBool("ChaseRight", false);
         }
         else if (transform.position.x >= pointB.transform.position.x)
         {
             currentPoint = pointA.transform;
             m_TurnAround = true;
+            m_Anim.SetBool("Left", true);
+            m_Anim.SetBool("ChaseLeft", false);
         }
 
         transform.position = Vector2.MoveTowards(this.transform.position, currentPoint.position, m_speed * Time.deltaTime);
@@ -147,6 +163,14 @@ public class EnemyScript : MonoBehaviour
             m_TurnAround = !m_TurnAround;
             m_TimeIncrease = 0f;
         }
+    }
+
+    void ResetAnimDirection()
+    {
+        m_Anim.SetBool("Right", false);
+        m_Anim.SetBool("Left", false);
+        //m_Anim.SetBool("ChaseRight", false);
+        //m_Anim.SetBool("ChaseLeft", false);
     }
 
     private void OnDrawGizmosSelected()

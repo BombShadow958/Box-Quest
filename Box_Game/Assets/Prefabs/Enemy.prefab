@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 2366237054200679987}
   - component: {fileID: 3801336124432071586}
   - component: {fileID: 8874357442177179176}
+  - component: {fileID: 4466940772463703050}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -146,6 +147,7 @@ MonoBehaviour:
   m_CastPoint: {fileID: 4919657398605117577}
   pointA: {fileID: 4777976347888791083}
   pointB: {fileID: 5475884626672512812}
+  m_Anim: {fileID: 0}
 --- !u!50 &2366237054200679987
 Rigidbody2D:
   serializedVersion: 4
@@ -314,6 +316,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &4466940772463703050
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4645803785686940752}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3d5741a4cccf8ab47a7ecaedeb66c279, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4777976347888791083
 GameObject:
   m_ObjectHideFlags: 0
