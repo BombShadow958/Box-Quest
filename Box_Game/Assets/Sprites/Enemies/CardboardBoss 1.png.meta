@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 574cd76b650d6a948af95c28b19276ae
+guid: 777cd6e08f9f0e04da419065ca2607b0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,11 +110,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CardboardBoss_0
+      name: CardboardBoss 1_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
+        y: 224
         width: 32
         height: 32
       alignment: 0
@@ -124,18 +124,165 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 915d270964c317c41a9183adc75ab5b3
-      internalID: 1191236530
+      spriteID: 2ec19b1c0531bd445b96eb3fed6db0c2
+      internalID: -297296907
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CardboardBoss_1
+      name: CardboardBoss 1_1
       rect:
         serializedVersion: 2
-        x: 43
-        y: 79
+        x: 37
+        y: 224
+        width: 63
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6616edc40b4b3d0478037536476b2979
+      internalID: -1885555079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CardboardBoss 1_2
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 224
+        width: 94
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba7e015d601f80c48aa715cfc16ea164
+      internalID: 1521649285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CardboardBoss 1_3
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 219
+        width: 94
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ed8e33558c9be14891d305529b1e9dd
+      internalID: -1906701944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CardboardBoss 1_4
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 208
+        width: 94
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1155ddfe55ecf34daaa5c5dc29bbef9
+      internalID: -1298187816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CardboardBoss 1_5
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 208
+        width: 94
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 214dac6a5c9a91b418559ae11a4f8422
+      internalID: -642647461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CardboardBoss 1_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 94
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 186d62dc0d00d1d4e9dd37325e2816d7
+      internalID: -21199970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CardboardBoss 1_7
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 160
+        width: 69
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e85cb33d180c024eba6027d3accc6b7
+      internalID: 330249405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CardboardBoss 1_8
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 163
         width: 56
         height: 49
       alignment: 0
@@ -145,18 +292,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48c12075b14c47f4d8d04c6ba87a5eb6
-      internalID: 1719396508
+      spriteID: c33a86db64cabe5438874547ce3e7595
+      internalID: 1373240609
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CardboardBoss_2
+      name: CardboardBoss 1_9
       rect:
         serializedVersion: 2
         x: 0
-        y: 10
+        y: 87
         width: 53
         height: 62
       alignment: 0
@@ -166,18 +313,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52588ee7508265f4990d097db5675188
-      internalID: -409920014
+      spriteID: 17ee1d600d8ee694eb42d46fa4b5419d
+      internalID: 320444929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CardboardBoss_3
+      name: CardboardBoss 1_10
       rect:
         serializedVersion: 2
         x: 68
-        y: 10
+        y: 87
         width: 56
         height: 49
       alignment: 0
@@ -187,8 +334,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8036de52f79002443b9bfe7d78b5d13a
-      internalID: -475243841
+      spriteID: 47605be79f0174a4fb6f0eb8b0b272e0
+      internalID: -1187744635
       vertices: []
       indices: 
       edges: []
@@ -204,10 +351,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CardboardBoss_0: 1191236530
-      CardboardBoss_1: 1719396508
-      CardboardBoss_2: -409920014
-      CardboardBoss_3: -475243841
+      CardboardBoss 1_0: -297296907
+      CardboardBoss 1_1: -1885555079
+      CardboardBoss 1_10: -1187744635
+      CardboardBoss 1_2: 1521649285
+      CardboardBoss 1_3: -1906701944
+      CardboardBoss 1_4: -1298187816
+      CardboardBoss 1_5: -642647461
+      CardboardBoss 1_6: -21199970
+      CardboardBoss 1_7: 330249405
+      CardboardBoss 1_8: 1373240609
+      CardboardBoss 1_9: 320444929
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
