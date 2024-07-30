@@ -19,6 +19,7 @@ public class PlayerControls : MonoBehaviour
 
     public float jump;
     private Rigidbody2D rb;
+    [HideInInspector] public Animator m_animator;
     //float m_Horizontal;
     //float m_Vertical;
     private float maxSize = 15;
@@ -38,7 +39,9 @@ public class PlayerControls : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-      
+
+        m_animator = GetComponent<Animator>();
+
     }
     // Start is called before the first frame update
     void Start()
@@ -49,6 +52,7 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ResetAnimDirection();
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             sfxSource.clip = jumpSFX;
@@ -62,11 +66,14 @@ public class PlayerControls : MonoBehaviour
 
 
         //Size Changing
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
-            if (isGrounded && roofCheck.isColliding || frontCheck.isColliding && backCheck.isColliding) {
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            if (isGrounded && roofCheck.isColliding || frontCheck.isColliding && backCheck.isColliding)
+            {
                 return;
             }
-            else {
+            else
+            {
                 sfxSource.clip = growSFX;
                 sfxSource.Play();
                 transform.localScale += new Vector3(0.0100f, 0.0100f, 0.0100f);
@@ -79,20 +86,22 @@ public class PlayerControls : MonoBehaviour
             sfxSource.Play();
             transform.localScale -= new Vector3(0.0100f, 0.0100f, 0.0100f);
             rb.mass -= 0.01f;
-            
+
         }
 
-        if (transform.localScale == new Vector3(4f, 4f, 4f)) {
+        if (transform.localScale == new Vector3(4f, 4f, 4f))
+        {
             transform.localScale -= new Vector3(0.01f, 0.01f, 0.01f);
             rb.mass -= 0.01f;
         }
-        if (transform.localScale == new Vector3(0.1f, 0.1f, 0.1f)) {
+        if (transform.localScale == new Vector3(0.1f, 0.1f, 0.1f))
+        {
             transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
             rb.mass += 0.01f;
         }
 
 
-       
+
 
         x = transform.position.x;
         y = transform.position.y;
@@ -111,16 +120,44 @@ public class PlayerControls : MonoBehaviour
         }*/
 
         // invinciblilty
-        if (m_IFrames > 0) {
+        if (m_IFrames > 0)
+        {
             m_IsInvincible = true;
             m_IFrames -= 1 * Time.deltaTime;
         }
-        else   {
+        else
+        {
             m_IsInvincible = false;
         }
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        {
+
+            // Call to the animator and set the walk layer weight to 1
+            m_animator.SetLayerWeight(1, 1);
+
+            // if the input given is Left or Right
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            {
+                // Check the value of the Horizontal Movement. Negative = left, positive = right
+                if (direction < 0)
+                {
+                    // Left movement detected, call to animator to set the left bool to true
+                    m_animator.SetBool("Left", true);
+                }
+                else
+                {
+                    m_animator.SetBool("Right", true);
+                }
+            }
+        }
+        else // no movement detected
+        {
+            m_animator.SetLayerWeight(1, 0);
+            m_animator.SetLayerWeight(2, 0);
+        }
     }
-    
-    public void UpdateCheckpoint(Vector2 pos)
+
+        public void UpdateCheckpoint(Vector2 pos)
     {
         Checkpoint = pos;
     }
@@ -160,5 +197,12 @@ public class PlayerControls : MonoBehaviour
         //m_Horizontal = Input.GetAxis("Horizontal");
 
         //rb.velocity = new Vector2(m_Horizontal * m_Speed, m_Vertical * m_Speed);
+    }
+    void ResetAnimDirection()
+    {
+        m_animator.SetBool("Left", false);
+        m_animator.SetBool("Right", false);
+        m_animator.SetBool("Forward", false);
+        m_animator.SetBool("Backward", false);
     }
 }
