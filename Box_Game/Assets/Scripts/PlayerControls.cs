@@ -89,6 +89,7 @@ public class PlayerControls : MonoBehaviour
             sfxSource.Play();
             transform.localScale -= new Vector3(0.0100f, 0.0100f, 0.0100f);
             rb.mass -= 0.01f;
+            rb.AddForce(Vector2.up * 5);
 
         }
 
@@ -101,6 +102,7 @@ public class PlayerControls : MonoBehaviour
         {
             transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
             rb.mass += 0.01f;
+            rb.AddForce(Vector2.down * 5);
         }
 
 
@@ -131,6 +133,15 @@ public class PlayerControls : MonoBehaviour
         else
         {
             m_IsInvincible = false;
+        }
+        if (m_HitPoints == 2)
+        {
+            m_animator.SetBool("Hurt", true);
+        }
+        if (m_HitPoints == 1)
+        {
+            m_animator.SetBool("Injured", true);
+            m_animator.SetBool("Hurt", false);
         }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
         {
