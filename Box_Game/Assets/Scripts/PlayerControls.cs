@@ -119,10 +119,10 @@ public class PlayerControls : MonoBehaviour
         }
 
         //Win Screen
-        /*if (x > 81)
+        if (x > 225)
         {
             SceneManager.LoadSceneAsync(2);
-        }*/
+        }
 
         // invinciblilty
         if (m_IFrames > 0)

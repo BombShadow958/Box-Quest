@@ -39,7 +39,7 @@ public class BossScript : MonoBehaviour
     public void Spawned()
     {
         hasSpawned = true;
-        finalBoss = false;
+        
     }
 
 
@@ -52,7 +52,7 @@ public class BossScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         m_Anim = GetComponent<Animator>();
         hasSpawned = false;
-
+        finalBoss = false;
     }
 
     // Update is called once per frame
@@ -70,7 +70,7 @@ public class BossScript : MonoBehaviour
         }
         else if (BossHP <= 0 && finalBoss == true) {
             //Destroy(this);
-         //   m_Anim.SetBool("Death", true);
+            m_Anim.SetBool("Death", true);
         }
 
         if (distanceFromPlayer > m_AwakeRange && hasSpawned != true)
@@ -80,11 +80,9 @@ public class BossScript : MonoBehaviour
 
         if (distanceFromPlayer < m_AwakeRange && hasSpawned != true)
         {
-            m_Anim.SetBool("Spawned", true);
-
             if (transform.position.y >= 0)
             {
-
+                m_Anim.SetBool("Spawned", true);
             }
             else
             {
