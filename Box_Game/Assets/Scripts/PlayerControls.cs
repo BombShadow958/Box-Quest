@@ -183,6 +183,7 @@ public class PlayerControls : MonoBehaviour
                 sfxSource.Play();
                 m_IFrames = 1.5f;
                 m_HitPoints--;
+                transform.position = Checkpoint;
             }
 
         }
