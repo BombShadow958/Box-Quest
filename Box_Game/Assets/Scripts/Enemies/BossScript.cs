@@ -32,9 +32,12 @@ public class BossScript : MonoBehaviour
 
     bool hasSpawned;
 
+    public bool finalBoss;
+
     public void Spawned()
     {
         hasSpawned = true;
+        finalBoss = false;
     }
 
 
@@ -56,10 +59,14 @@ public class BossScript : MonoBehaviour
 
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
 
-        if (BossHP <= 0)
+        if (BossHP <= 0 && finalBoss == false)
         {
             Destroy(this);
             transform.position = new Vector2(-100, -100);
+        }
+        else if (BossHP <= 0 && finalBoss == true) {
+            //Destroy(this);
+            m_Anim.SetBool("Death", true);
         }
 
         if (distanceFromPlayer > m_AwakeRange && hasSpawned != true)
@@ -132,6 +139,7 @@ public class BossScript : MonoBehaviour
         m_Anim.SetBool("Attack", false);
         m_Anim.SetBool("Spawned", false);
         m_Anim.SetBool("Sleep", false);
+        m_Anim.SetBool("Death", false);
     }
 
     private void OnDrawGizmosSelected()
