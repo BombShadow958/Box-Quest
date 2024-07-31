@@ -88,6 +88,7 @@ public class PlayerControls : MonoBehaviour
             sfxSource.Play();
             transform.localScale -= new Vector3(0.0100f, 0.0100f, 0.0100f);
             rb.mass -= 0.01f;
+            rb.AddForce(Vector2.up * 5);
 
         }
 
@@ -100,6 +101,7 @@ public class PlayerControls : MonoBehaviour
         {
             transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
             rb.mass += 0.01f;
+            rb.AddForce(Vector2.down * 5);
         }
 
 
