@@ -159,7 +159,7 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-        public void UpdateCheckpoint(Vector2 pos)
+    public void UpdateCheckpoint(Vector2 pos)
     {
         Checkpoint = pos;
     }
