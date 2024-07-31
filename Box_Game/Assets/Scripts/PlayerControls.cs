@@ -53,6 +53,7 @@ public class PlayerControls : MonoBehaviour
     void Update()
     {
         ResetAnimDirection();
+        
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             sfxSource.clip = jumpSFX;
