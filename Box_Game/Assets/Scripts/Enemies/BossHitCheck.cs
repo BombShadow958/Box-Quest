@@ -9,7 +9,7 @@ public class BossHitCheck : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.gameObject.CompareTag("Box") && !collision.gameObject.CompareTag("Ground") && !collision.gameObject.CompareTag("Untagged"))
+        if (!collision.gameObject.CompareTag("Box") && !collision.gameObject.CompareTag("Ground") && !collision.gameObject.CompareTag("Untagged") && !collision.gameObject.CompareTag("Enemy"))
         {
             isColliding = true;
         }

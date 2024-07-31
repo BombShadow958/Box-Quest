@@ -20,7 +20,7 @@ public class SPIN : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Player")) {
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Box")) {
             Spinning = false;
         }
     }

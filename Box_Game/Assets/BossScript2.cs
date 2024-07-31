@@ -4,7 +4,7 @@ using System.Data;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BossScript : MonoBehaviour
+public class BossScript2 : MonoBehaviour
 {
     public float m_speed;
     public float m_AggroRange;
@@ -22,13 +22,11 @@ public class BossScript : MonoBehaviour
     [SerializeField] private BossHitCheck topCheck;
     [SerializeField] private int m_ShotType;
 
-    public Transform player;
+    private Transform player;
 
     private Rigidbody2D rb;
 
     private SpriteRenderer sr;
-
-    private Rigidbody2D prb;
 
     [HideInInspector] Animator m_Anim;
 
@@ -47,8 +45,6 @@ public class BossScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        prb = player.gameObject.GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         m_Anim = GetComponent<Animator>();
         hasSpawned = false;
@@ -70,7 +66,7 @@ public class BossScript : MonoBehaviour
         }
         else if (BossHP <= 0 && finalBoss == true) {
             //Destroy(this);
-         //   m_Anim.SetBool("Death", true);
+            m_Anim.SetBool("Death", true);
         }
 
         if (distanceFromPlayer > m_AwakeRange && hasSpawned != true)
@@ -114,21 +110,16 @@ public class BossScript : MonoBehaviour
             }
         }
         if (topCheck.isColliding && m_IsInvincible == false)  {
-            m_IFrames = 0.5f;
+            m_IFrames = 2.5f;
+            if (BossHP == 0) {
+               // Destroy(this.gameObject);
+            }
             BossHP--;
         }
         if (m_IFrames > 0) {
             m_IsInvincible = true;
             m_IFrames -= Time.deltaTime;
             rb.freezeRotation = false;
-            if (player.position.x > transform.position.x) {
-                prb.AddForce(Vector2.right * 1000);
-                Debug.Log("right");
-            }
-            else if (player.position.x < transform.position.x)  {
-                prb.AddForce(Vector2.left * 1000);
-                Debug.Log("left");
-            }
             transform.Rotate(0, 0, 15);
             sr.color = Color.red;
 

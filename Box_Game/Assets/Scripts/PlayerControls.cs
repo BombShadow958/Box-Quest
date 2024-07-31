@@ -29,7 +29,8 @@ public class PlayerControls : MonoBehaviour
     public float x;
     public float y;
 
-    private bool isGrounded;
+    [SerializeField] private bool isGroundedGround;
+    [SerializeField] private bool isGroundedBox;
     private bool isFloating;
 
     private int m_HitPoints = 3;
@@ -53,7 +54,7 @@ public class PlayerControls : MonoBehaviour
     void Update()
     {
         ResetAnimDirection();
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && (isGroundedGround || isGroundedBox))
         {
             sfxSource.clip = jumpSFX;
             sfxSource.Play();
@@ -70,7 +71,7 @@ public class PlayerControls : MonoBehaviour
         //Size Changing
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            if (isGrounded && roofCheck.isColliding || frontCheck.isColliding && backCheck.isColliding)
+            if (isGroundedGround && roofCheck.isColliding || frontCheck.isColliding && backCheck.isColliding)
             {
                 return;
             }
@@ -154,8 +155,8 @@ public class PlayerControls : MonoBehaviour
         }
         else // no movement detected
         {
+            m_animator.SetLayerWeight(0, 0);
             m_animator.SetLayerWeight(1, 0);
-            m_animator.SetLayerWeight(2, 0);
         }
     }
 
@@ -167,9 +168,14 @@ public class PlayerControls : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Box"))
+        if (other.gameObject.CompareTag("Ground"))
         {
-            isGrounded = true;
+            isGroundedGround = true;
+            m_animator.SetBool("Jump", false);
+        }
+        if (other.gameObject.CompareTag("Box"))
+        {
+            isGroundedBox = true;
             m_animator.SetBool("Jump", false);
         }
 
@@ -191,9 +197,13 @@ public class PlayerControls : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Box"))
+        if (other.gameObject.CompareTag("Ground") && (!frontCheck.isColliding || !backCheck.isColliding))
         {
-            isGrounded = false;
+            isGroundedGround = false;
+        }
+        if ( other.gameObject.CompareTag("Box") && (!frontCheck.isColliding || !backCheck.isColliding))
+        {
+            isGroundedBox = false;
         }
     }
 

@@ -19,10 +19,12 @@ public class BoxBullet : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other)  {
-        if (other.gameObject.CompareTag("Ground"))  {
-            this.tag = "Ground";
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Box"))  {
+            this.tag = "Box";
             bulletRB.gravityScale = 1;
             bulletRB.mass = 10;
+            bulletRB.angularDrag = 1;
+            
         }
     }
 }
