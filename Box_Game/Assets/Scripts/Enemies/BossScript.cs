@@ -56,6 +56,12 @@ public class BossScript : MonoBehaviour
 
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
 
+        if (BossHP <= 0)
+        {
+            Destroy(this);
+            transform.position = new Vector2(-100, -100);
+        }
+
         if (distanceFromPlayer > m_AwakeRange && hasSpawned != true)
         {
             m_Anim.SetBool("Sleep", true);
@@ -64,6 +70,15 @@ public class BossScript : MonoBehaviour
         if (distanceFromPlayer < m_AwakeRange && hasSpawned != true)
         {
             m_Anim.SetBool("Spawned", true);
+
+            if (transform.position.y >= 0)
+            {
+
+            }
+            else
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y + 0.5f);
+            }
         }
 
         if (hasSpawned == true)
@@ -108,9 +123,7 @@ public class BossScript : MonoBehaviour
             m_IsInvincible = false;
             sr.color = Color.white;
         }
-        if (BossHP <= 0)  {
-            Destroy(this);
-        }
+        
     }
 
     void ResetAnimDirection()
