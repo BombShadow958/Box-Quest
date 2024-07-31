@@ -131,6 +131,15 @@ public class PlayerControls : MonoBehaviour
         {
             m_IsInvincible = false;
         }
+        if (m_HitPoints == 2)
+        {
+            m_animator.SetBool("Hurt", true);
+        }
+        if (m_HitPoints == 1)
+        {
+            m_animator.SetBool("Injured", true);
+            m_animator.SetBool("Hurt", false);
+        }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
         {
 
