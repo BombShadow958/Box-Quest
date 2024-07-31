@@ -2692,7 +2692,7 @@ MonoBehaviour:
   jumpSFX: {fileID: 8300000, guid: ad1fd50dd1b89f945ac7a0dc5f7252f9, type: 3}
   growSFX: {fileID: 8300000, guid: 6c190c25779c64b42900f2c01f25ab79, type: 3}
   shrinkSFX: {fileID: 8300000, guid: 1d5bfe8484d71d043865bf01c38dbcaf, type: 3}
-  GotHitSFX: {fileID: 8300000, guid: d0d54e8e350f1374488b32aa189e0d30, type: 3}
+  GotHitSFX: {fileID: 8300000, guid: 8dd7818692a877f4e86f2c6eb2ad991e, type: 3}
   Checkpoint: {x: 0, y: 0}
   Player: {fileID: 725913287}
   roofCheck: {fileID: 128943059}
