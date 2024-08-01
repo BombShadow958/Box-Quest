@@ -21,6 +21,8 @@ public class BossScript : MonoBehaviour
 
     [SerializeField] private BossHitCheck topCheck;
     [SerializeField] private int m_ShotType;
+    [SerializeField] private bool m_Attacking;
+
 
     public Transform player;
 
@@ -52,7 +54,6 @@ public class BossScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         m_Anim = GetComponent<Animator>();
         hasSpawned = false;
-        finalBoss = false;
     }
 
     // Update is called once per frame
@@ -69,8 +70,10 @@ public class BossScript : MonoBehaviour
             transform.position = new Vector2(-100, -100);
         }
         else if (BossHP <= 0 && finalBoss == true) {
-            //Destroy(this);
+           
             m_Anim.SetBool("Death", true);
+            m_Attacking = false;
+
         }
 
         if (distanceFromPlayer > m_AwakeRange && hasSpawned != true)
@@ -92,23 +95,25 @@ public class BossScript : MonoBehaviour
 
         if (hasSpawned == true)
         {
-            if (distanceFromPlayer < m_AggroRange && distanceFromPlayer > m_ShootingRange)
+            if (distanceFromPlayer < m_AggroRange && distanceFromPlayer > m_ShootingRange )
             {
                 transform.position = Vector2.MoveTowards(this.transform.position, player.position, m_speed * Time.deltaTime);
                 m_Anim.SetBool("Idle", true);
             }
-            else if (distanceFromPlayer <= m_ShootingRange && m_nextFireTime < Time.time)
+            else if (distanceFromPlayer <= m_ShootingRange && m_nextFireTime < Time.time && !m_Anim.GetBool("Death") || !m_Anim.GetBool("Dead"))
             {
                 m_Anim.SetBool("Attack", true);
+                m_Attacking = true;
                 m_ShotType = Random.Range(0, 2);
-                if (m_ShotType == 0)
-                {
-                    Instantiate(m_bullet, m_bulletParent.transform.position, Quaternion.identity);
+                if (m_Attacking == true) {
+                    if (m_ShotType == 0) {
+                        Instantiate(m_bullet, m_bulletParent.transform.position, Quaternion.identity);
+                    }
+                    else if (m_ShotType == 1) {
+                        Instantiate(m_boxBullet, m_bulletParent.transform.position, Quaternion.identity);
+                    }
+                    m_nextFireTime = Time.time + m_FireRate;
                 }
-                else if (m_ShotType == 1) {
-                    Instantiate(m_boxBullet, m_bulletParent.transform.position, Quaternion.identity);
-                }
-                m_nextFireTime = Time.time + m_FireRate;
             }
         }
         if (topCheck.isColliding && m_IsInvincible == false)  {
@@ -146,7 +151,14 @@ public class BossScript : MonoBehaviour
         m_Anim.SetBool("Attack", false);
         m_Anim.SetBool("Spawned", false);
         m_Anim.SetBool("Sleep", false);
-        m_Anim.SetBool("Death", false);
+        if (finalBoss) {
+            m_Anim.SetBool("Death", false);
+        }
+
+    }
+
+    void BossDies() {
+        Destroy(this.gameObject);
     }
 
     private void OnDrawGizmosSelected()
