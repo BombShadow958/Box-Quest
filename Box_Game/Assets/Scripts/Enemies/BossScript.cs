@@ -26,6 +26,11 @@ public class BossScript : MonoBehaviour
 
     public Transform player;
 
+    public PlayerControls playerX;
+
+    public GameObject Magic; // Assign this in the Inspector
+    private MagicCode magicCode; // Reference to the DoorCode script
+
     private Rigidbody2D rb;
 
     private SpriteRenderer sr;
@@ -45,6 +50,16 @@ public class BossScript : MonoBehaviour
     }
 
 
+    
+    void Awake()
+    {
+        playerX = FindObjectOfType<PlayerControls>();
+        if (Magic != null)
+        {
+            // Get the DoorCode component from the Door GameObject
+            magicCode = Magic.GetComponent<MagicCode>();
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +75,15 @@ public class BossScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerX.x > 207.5f && finalBoss == true && hasSpawned == false)
+        {
+            magicCode.fly = true;
+            while (transform.position.y > -3.19)
+            {
+                transform.Translate(Vector2.down * 5 * Time.deltaTime);
+                break;
+            }
+        }
 
         ResetAnimDirection();
 
