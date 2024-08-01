@@ -54,6 +54,7 @@ public class BossScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         m_Anim = GetComponent<Animator>();
         hasSpawned = false;
+        m_Attacking = true;
     }
 
     // Update is called once per frame
@@ -100,10 +101,9 @@ public class BossScript : MonoBehaviour
                 transform.position = Vector2.MoveTowards(this.transform.position, player.position, m_speed * Time.deltaTime);
                 m_Anim.SetBool("Idle", true);
             }
-            else if (distanceFromPlayer <= m_ShootingRange && m_nextFireTime < Time.time && !m_Anim.GetBool("Death") || !m_Anim.GetBool("Dead"))
+            else if (distanceFromPlayer <= m_ShootingRange && m_nextFireTime < Time.time && !m_Anim.GetBool("Death"))
             {
                 m_Anim.SetBool("Attack", true);
-                m_Attacking = true;
                 m_ShotType = Random.Range(0, 2);
                 if (m_Attacking == true) {
                     if (m_ShotType == 0) {
