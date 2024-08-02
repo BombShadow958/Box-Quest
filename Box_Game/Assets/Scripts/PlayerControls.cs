@@ -141,7 +141,7 @@ public class PlayerControls : MonoBehaviour
         if (m_HitPoints == 2)
         {
             m_animator.SetBool("Hurt", true);
-        }
+        } 
         if (m_HitPoints == 1)
         {
             m_animator.SetBool("Injured", true);
@@ -204,8 +204,8 @@ public class PlayerControls : MonoBehaviour
                     transform.position = Checkpoint;
                     m_lives--;
                     m_HitPoints = 3;
-                    m_animator.SetBool("Hurt", false);
-                    m_animator.SetBool("Injured", false);
+                   /* m_animator.SetBool("Hurt", false);
+                    m_animator.SetBool("Injured", false);*/
                 }
             }
             else {
