@@ -204,6 +204,8 @@ public class PlayerControls : MonoBehaviour
                     transform.position = Checkpoint;
                     m_lives--;
                     m_HitPoints = 3;
+                    m_animator.SetBool("Hurt", false);
+                    m_animator.SetBool("Injured", false);
                 }
             }
             else {
