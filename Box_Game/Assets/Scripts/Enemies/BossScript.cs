@@ -58,6 +58,8 @@ public class BossScript : MonoBehaviour
     public GameObject Door; // Assign this in the Inspector
     private DoorCode doorCode; // Reference to the DoorCode script
 
+    public bool yes;
+
     void Awake()
     {
         playerX = FindObjectOfType<PlayerControls>();
@@ -83,6 +85,7 @@ public class BossScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        yes = true;
         timer += Time.deltaTime;
         if (timer > timeBetweenLaughs && finalBoss == true && hasSpawned == true)
         {
