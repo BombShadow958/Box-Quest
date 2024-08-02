@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ButtonCode : MonoBehaviour
 {
+    public AudioSource sfxSource;
+    public AudioClip pressSFX;
     public GameObject Door; // Assign this in the Inspector
     private DoorCode doorCode; // Reference to the DoorCode script
     [HideInInspector] public Animator m_animator;
@@ -26,6 +28,8 @@ public class ButtonCode : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Box"))
         {
+            sfxSource.clip = pressSFX;
+            sfxSource.Play();
             m_animator.SetBool("Pressed", true);
             if (doorCode != null)
             {

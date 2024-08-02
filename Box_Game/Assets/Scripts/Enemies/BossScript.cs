@@ -48,9 +48,16 @@ public class BossScript : MonoBehaviour
         hasSpawned = true;
         
     }
+    public AudioSource sfxSource;
+    public AudioClip LaughSFX;
+
+    public float timer;
+    public float timeBetweenLaughs;
 
 
-    
+    public GameObject Door; // Assign this in the Inspector
+    private DoorCode doorCode; // Reference to the DoorCode script
+
     void Awake()
     {
         playerX = FindObjectOfType<PlayerControls>();
@@ -59,6 +66,7 @@ public class BossScript : MonoBehaviour
             // Get the DoorCode component from the Door GameObject
             magicCode = Magic.GetComponent<MagicCode>();
         }
+        doorCode = Door.GetComponent<DoorCode>();
     }
     // Start is called before the first frame update
     void Start()
@@ -75,6 +83,14 @@ public class BossScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+        if (timer > timeBetweenLaughs && finalBoss == true && hasSpawned == true)
+        {
+            timer = 0;
+            int randomNum = Random.Range(0, 2);
+            sfxSource.clip = LaughSFX;
+            sfxSource.Play();
+        }
         if (playerX.x > 207.5f && finalBoss == true && hasSpawned == false)
         {
             magicCode.fly = true;
@@ -98,7 +114,7 @@ public class BossScript : MonoBehaviour
            
             m_Anim.SetBool("Death", true);
             m_Attacking = false;
-
+            doorCode.reallyOpen = true;
         }
 
         if (distanceFromPlayer > m_AwakeRange && hasSpawned != true)
