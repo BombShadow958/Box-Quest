@@ -3753,6 +3753,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1916524582386805661, guid: 0cdf09c62d97cff48ac2d81464729d93, type: 3}
   m_PrefabInstance: {fileID: 1890447240}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &578909235 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7472620562174632124, guid: 94159d723f6874243bd07346fdc66523, type: 3}
+  m_PrefabInstance: {fileID: 982389613}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &579522147 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1916524582386805661, guid: 0cdf09c62d97cff48ac2d81464729d93, type: 3}
@@ -4998,7 +5003,7 @@ MonoBehaviour:
   m_lives: 3
   m_lifeIndicator1: {fileID: 29470172}
   m_lifeIndicator2: {fileID: 1309723095}
-  m_lifeIndicator3: {fileID: 0}
+  m_lifeIndicator3: {fileID: 578909235}
 --- !u!82 &725913293
 AudioSource:
   m_ObjectHideFlags: 0
