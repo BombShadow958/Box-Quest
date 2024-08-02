@@ -1422,23 +1422,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3259743454792903143, guid: 351212457629f864d83d9e2a8d7ed253, type: 3}
   m_PrefabInstance: {fileID: 3759364807725137496}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &176606432 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8146866134145975550, guid: 351212457629f864d83d9e2a8d7ed253, type: 3}
-  m_PrefabInstance: {fileID: 3759364807725137496}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &176606438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176606432}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 207a36a45005bc64aa15cac32fba9f0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &186216399 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7728556962452882554, guid: 5083183551e8e814faec952b4a36603a, type: 3}
@@ -5582,7 +5565,7 @@ Transform:
   m_GameObject: {fileID: 725913287}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 204.5, y: 2.5, z: 0}
+  m_LocalPosition: {x: -7, y: -3.5, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -44997,13 +44980,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 8146866134145975550, guid: 351212457629f864d83d9e2a8d7ed253, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8146866134145975550, guid: 351212457629f864d83d9e2a8d7ed253, type: 3}
-      insertIndex: 5
-      addedObject: {fileID: 176606438}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 351212457629f864d83d9e2a8d7ed253, type: 3}
 --- !u!1001 &4411373909806889985
 PrefabInstance:
