@@ -36,6 +36,10 @@ public class PlayerControls : MonoBehaviour
     private int m_HitPoints = 3;
     private bool m_IsInvincible = false;
     private float m_IFrames;
+    [SerializeField] private int m_lives = 3;
+    [SerializeField] private GameObject m_lifeIndicator1;
+    [SerializeField] private GameObject m_lifeIndicator2;
+    [SerializeField] private GameObject m_lifeIndicator3;
 
     private void Awake()
     {
@@ -47,7 +51,7 @@ public class PlayerControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -193,16 +197,31 @@ public class PlayerControls : MonoBehaviour
         //Lose Screen 
         if (other.gameObject.CompareTag("Enemy") && m_IsInvincible == false) {
             if (m_HitPoints == 1) {
-                SceneManager.LoadSceneAsync(3);
+                if (m_lives == 0) {
+                    SceneManager.LoadSceneAsync(3);
+                }
+                else {
+                    transform.position = Checkpoint;
+                    m_lives--;
+                    m_HitPoints = 3;
+                }
             }
             else {
                 sfxSource.clip = GotHitSFX;
                 sfxSource.Play();
                 m_IFrames = 1.5f;
                 m_HitPoints--;
-                transform.position = Checkpoint;
+               
             }
-
+        }
+        if (m_lives == 2) {
+            Destroy(m_lifeIndicator3);
+        }
+        if (m_lives == 1) {
+            Destroy(m_lifeIndicator2);
+        }
+        if (m_lives == 0) {
+            Destroy(m_lifeIndicator1);
         }
     }
 
