@@ -8,6 +8,9 @@ public class Checkpoint : MonoBehaviour
 
     [HideInInspector] Animator m_Anim;
 
+    public AudioSource sfxSource;
+    public AudioClip touchSFX;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -17,10 +20,17 @@ public class Checkpoint : MonoBehaviour
         m_Anim.SetBool("Activated", false);
     }
 
+    void Update()
+    {
+
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            sfxSource.clip = touchSFX;
+            sfxSource.Play();
             playerControls.UpdateCheckpoint(transform.position);
             m_Anim.SetBool("Activated", true);
         }
