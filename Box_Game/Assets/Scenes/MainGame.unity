@@ -16362,6 +16362,10 @@ PrefabInstance:
       propertyPath: sfxSource
       value: 
       objectReference: {fileID: 1847647593}
+    - target: {fileID: 2969530977986237783, guid: 351212457629f864d83d9e2a8d7ed253, type: 3}
+      propertyPath: timeBetweenLaughs
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3259743454792903143, guid: 351212457629f864d83d9e2a8d7ed253, type: 3}
       propertyPath: m_LocalPosition.x
       value: 222.63
