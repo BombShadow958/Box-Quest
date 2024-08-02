@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3038505896342775060}
   m_Layer: 0
   m_Name: Button
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxSource: {fileID: 3038505896342775060}
-  noiseSFX: {fileID: 8300000, guid: 539d2e8400f3bc942b9da29e57e206d4, type: 3}
+  pressSFX: {fileID: 0}
   Door: {fileID: 0}
   m_animator: {fileID: 0}
 --- !u!61 &6914261961203522902
